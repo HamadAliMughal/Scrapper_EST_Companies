@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2d3d&+zxmf(yd_pjfpzi85$)4o8@5trib98s5e20$p#@(lu+$-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://scrapper-est-companies-qvpd.vercel.app/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
