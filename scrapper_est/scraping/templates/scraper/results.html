@@ -1,0 +1,125 @@
+<!-- scraper/templates/scraper/results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        td {
+            font-size: 1.1em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            font-size: 1.5em;
+            color: #FF5733;
+            margin-top: 20px;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 1000px;
+            width: 100%;
+            overflow:scroll;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search Results</h1>
+
+        {% if data %}
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Emails</th>
+                            <th>Phones</th>
+                            <th>Website</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                            <tr>
+                                <td>{{ item.Company_Name }}</td>
+                                <td>{{ item.Emails }}</td>
+                                <td>{{ item.Phones }}</td>
+                                <td><a href="{{ item.Website }}" target="_blank">{{ item.Website }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="no-results">No results found for your search.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

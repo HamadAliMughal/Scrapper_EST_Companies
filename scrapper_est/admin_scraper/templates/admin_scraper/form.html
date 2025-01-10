@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Start Scraping</h1>
+
+        <!-- Form for Keywords and States -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="keywords" class="form-label">Keywords</label>
+                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter keywords separated by commas" required>
+            </div>
+            <div class="mb-3">
+                <label for="states" class="form-label">States</label>
+                <input type="text" class="form-control" id="states" name="states" placeholder="Enter states separated by commas" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Start Scraping</button>
+        </form>
+
+        <!-- Table to display ScrappingToBe data -->
+        <h2 class="mt-5">Scrapping To Be Done</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Keyword</th>
+                    <th>State</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in scrapping_to_be_entries %}
+                    <tr>
+                        <td>{{ entry.keyword }}</td>
+                        <td>{{ entry.state }}</td>
+                        <td>
+                            <form method="POST" action="{% url 'start_scraping' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Start Scraping</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

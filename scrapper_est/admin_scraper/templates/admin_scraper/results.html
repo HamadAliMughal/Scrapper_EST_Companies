@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper Results</title>
+</head>
+<body>
+    <h1>Scraper Results</h1>
+    {% if results %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Emails</th>
+                    <th>Phones</th>
+                    <th>Website</th>
+                    <th>Address</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.Company_Name }}</td>
+                    <td>{{ result.Emails|join:", " }}</td>
+                    <td>{{ result.Phones|join:", " }}</td>
+                    <td><a href="{{ result.Website }}" target="_blank">{{ result.Website }}</a></td>
+                    <td>{{ result.Address }}</td>
+                    <td>{{ result.Company }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="{% url 'process_scraper' %}">Run another search</a>
+</body>
+</html>
