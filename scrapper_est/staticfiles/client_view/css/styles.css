@@ -1,0 +1,47 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+table {
+    margin-top: 20px;
+}
+
+th {
+    background-color: #007bff !important;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #ffffff;
+    color: #495057;
+}
+
+.page-link {
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.page-item .page-link:hover {
+    background-color: #007bff;
+    color: white;
+}
