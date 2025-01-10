@@ -1,5 +1,5 @@
 [build]
-  base = "/"
+  base = ""
   publish = "static"
   functions = "functions"
   command = "python manage.py collectstatic && gunicorn scrapper_est.wsgi:application"
