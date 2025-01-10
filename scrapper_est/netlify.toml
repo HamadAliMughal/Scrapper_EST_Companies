@@ -1,5 +1,11 @@
 [build]
   base = "."
-  publish = "static"
-  functions = "functions"
-  command = "python manage.py collectstatic && gunicorn scrapper_est.wsgi:application"
+  publish = "staticfiles"  # Directory where static files are collected
+  functions = "functions"  # Directory for serverless functions (if using them)
+  command = "python manage.py collectstatic --noinput && gunicorn scrapper_est.wsgi:application"
+
+# Optional settings for redirects or rewrites
+[[redirects]]
+  from = "/static/*"
+  to = "/static/:splat"
+  status = 200
